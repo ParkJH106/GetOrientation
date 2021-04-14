@@ -73,6 +73,17 @@ public class MainActivity extends AppCompatActivity {
         sensorManager.registerListener(listener, accSensor, SensorManager.SENSOR_DELAY_UI);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(listener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     private float radian2Degree(float radian) {
         return  radian * 180 / (float)Math.PI;
     }
